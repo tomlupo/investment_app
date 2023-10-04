@@ -1,0 +1,89 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+#back-arrow {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#investment-plans-container {
+  overflow-x: auto;
+}
+
+.card {
+  flex: 0 0 auto;
+  margin-right: 10px;
+}
+
+.icon-conservative::before {
+  content: '\1F6E1';
+  /* Shield emoji as icon */
+}
+
+.icon-moderate::before {
+  content: '\1F9ED';
+  /* Compass emoji as icon */
+}
+
+.icon-balanced::before {
+  content: '\2696';
+  /* Scales emoji as icon */
+}
+
+.icon-growth::before {
+  content: '\1F3D4';
+  /* Mountain emoji as icon */
+}
+
+.icon-aggressive::before {
+  content: '\1F680';
+  /* Rocket emoji as icon */
+}
+
+.modal-content {
+  background-color: #fff;
+  /* Adding background color to modal */
+}
+
+/* Styling for modal to resemble a popup */
+.modal-dialog {
+  max-width: 70%;
+  margin: 1.75rem auto;
+}
+
+.plan-card {
+  border: 1px solid #000;
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  /* Optional: for some inner spacing */
+  box-sizing: border-box;
+  /* Ensures padding and border are included in the element's total width and height */
+}
+
+.icon {
+  font-size: 2em;
+  /* Adjust size as needed */
+  display: block;
+  /* Makes the icon block-level, which allows for centering */
+  text-align: center;
+  /* Centers the icon */
+  margin: 0 auto;
+  /* Additional centering for block-level elements */
+}
+
+.element {
+  margin-bottom: 10px;
+  /* Adjust value as needed */
+}

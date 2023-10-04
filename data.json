@@ -1,0 +1,122 @@
+{
+    "profiles": [
+        {
+            "name": "Conservative",
+            "icon": "🛡️ Shield",
+            "expectedNominalReturns": "0.5% - 3%",
+            "maximumDrawdown": "-2% (99% confidence)",
+            "description": "Ideal for individuals seeking to preserve capital with a low risk tolerance. Investments are geared towards money market and short-term government bonds.",
+            "matchingFund": "Shield",
+            "colorPalette": ["#BFD7EA", "#B5C7D3", "#AAB7C0"]
+        },
+        {
+            "name": "Moderate",
+            "icon": "🧭 Compass",
+            "expectedNominalReturns": "2% - 6%",
+            "maximumDrawdown": "-10% (99% confidence)",
+            "description": "Suitable for individuals with a moderate risk tolerance, looking for a balance between capital preservation and growth. Investments are diversified across all four asset classes.",
+            "matchingFund": "Compass",
+            "colorPalette": ["#FFD9AD", "#FFAB6B", "#FF8637"]
+        },
+        {
+            "name": "Balanced",
+            "icon": "⚖️ Scales",
+            "expectedNominalReturns": "3% - 8%",
+            "maximumDrawdown": "-15% (99% confidence)",
+            "description": "Aimed at individuals with a balanced risk profile, looking for moderate growth over time. Investments are more geared towards global bonds and global equities.",
+            "matchingFund": "Scales",
+            "colorPalette": ["#ADEBAD", "#70C370", "#329932"]
+        },
+        {
+            "name": "Growth",
+            "icon": "🌆 Skyline",
+            "expectedNominalReturns": "4% - 12%",
+            "maximumDrawdown": "-25% (99% confidence)",
+            "description": "Ideal for individuals seeking higher growth with a higher risk tolerance. Investments are primarily in global equities.",
+            "matchingFund": "Skyline",
+            "colorPalette": ["#FFABAB", "#FF5252", "#B21818"]
+        },
+        {
+            "name": "Aggressive",
+            "icon": "🚀 Rocket",
+            "expectedNominalReturns": "5% - 15%",
+            "maximumDrawdown": "-30% (99% confidence)",
+            "description": "Suitable for individuals with a high risk tolerance, seeking significant growth. Investments are heavily weighted towards global equities.",
+            "matchingFund": "Rocket",
+            "colorPalette": ["#FFC3A0", "#FF8C42", "#FF5C00"]
+        }
+    ],
+    "funds": [
+        {
+            "name": "Shield",
+            "icon": "🛡️ Shield",
+            "assetClassAllocation": {
+                "Money Market": "60%",
+                "Short-term Government Bonds": "40%"
+            },
+            "rangeOfReturns": "0.5% - 3%",
+            "maxDrawdown": "-2% (99% confidence)",
+            "minInvestmentHorizon": "1 month",
+            "minInvestmentHorizonMonths": 1,
+            "description": "A highly conservative fund focusing on capital preservation with short-term investments."
+        },
+        {
+            "name": "Compass",
+            "icon": "🧭 Compass",
+            "assetClassAllocation": {
+                "Money Market": "30%",
+                "Short-term Government Bonds": "30%",
+                "Global Bonds": "20%",
+                "Global Equities": "20%"
+            },
+            "rangeOfReturns": "2% - 6%",
+            "maxDrawdown": "-10% (99% confidence)",
+            "minInvestmentHorizon": "1.5 years",
+            "minInvestmentHorizonMonths": 18,
+            "description": "A moderate risk fund offering a balanced mix of asset classes for steady growth."
+        },
+        {
+            "name": "Scales",
+            "icon": "⚖️ Scales",
+            "assetClassAllocation": {
+                "Global Bonds": "40%",
+                "Global Equities": "40%",
+                "Money Market": "10%",
+                "Short-term Government Bonds": "10%"
+            },
+            "rangeOfReturns": "3% - 8%",
+            "maxDrawdown": "-15% (99% confidence)",
+            "minInvestmentHorizon": "3 years",
+            "minInvestmentHorizonMonths": 36,
+            "description": "A balanced risk fund aimed at moderate growth over time through a diversified portfolio."
+        },
+        {
+            "name": "Skyline",
+            "icon": "🌆 Skyline",
+            "assetClassAllocation": {
+                "Global Equities": "70%",
+                "Global Bonds": "20%",
+                "Money Market": "5%",
+                "Short-term Government Bonds": "5%"
+            },
+            "rangeOfReturns": "4% - 12%",
+            "maxDrawdown": "-25% (99% confidence)",
+            "minInvestmentHorizon": "5 years",
+            "minInvestmentHorizonMonths": 60,
+            "description": "A growth-oriented fund with a focus on capital appreciation through a higher allocation in global equities."
+        },
+        {
+            "name": "Rocket",
+            "icon": "🚀 Rocket",
+            "assetClassAllocation": {
+                "Global Equities": "90%",
+                "Global Bonds": "10%"
+            },
+            "rangeOfReturns": "5% - 15%",
+            "maxDrawdown": "-30% (99% confidence)",
+            "minInvestmentHorizon": "7 years",
+            "minInvestmentHorizonMonths": 84,
+            "description": "An aggressive growth fund targeting high returns with a predominant focus on global equities."
+        }
+    ]
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Investment App Prototype</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="app" class="container">
+    <div id="screen-container">
+      <!-- Back Arrow -->
+      <div id="back-arrow" class="hidden" onclick="goBack()">
+        <i class="fa fa-arrow-left"></i>
+      </div>
+      <!-- Path Selection Screen -->
+      <div id="path-selection-screen" class="screen">
+        <h2>Select Your Path</h2>
+        <button class="btn btn-primary" onclick="navigate('path-a-screen-1')">Set Goal (Path A)</button>
+        <button class="btn btn-primary" onclick="navigate('path-b-screen-1')">Just Invest (Path B)</button>
+      </div>
+
+      <!-- Path A Screens -->
+      <div id="path-a-screen-1" class="screen hidden">
+        <h2>Select Goal Amount</h2>
+        <input type="range" id="goal-amount-slider" min="1000" max="10000" step="500" value="5000"
+          oninput="updateGoalAmount('slider')">
+        <input type="number" id="goal-amount-input" min="1000" max="10000" step="500" value="5000"
+          oninput="updateGoalAmount('input')">
+        <button class="btn btn-primary"
+          onclick="updateGlobalVariables('path-a-screen-1'); navigate('path-a-screen-2'); initializePathAScreen2()">Next</button>
+      </div>
+
+      <div id="path-a-screen-2" class="screen hidden">
+        <h2>Select First Payment Amount</h2>
+        <input type="range" id="first-payment-amount-slider" min="100" step="100"
+          oninput="updateFirstPaymentAmount('slider')">
+        <input type="number" id="first-payment-amount-input" min="100" step="100"
+          oninput="updateFirstPaymentAmount('input')">
+        <button class="btn btn-primary"
+          onclick="updateGlobalVariables('path-a-screen-2'); navigate('path-a-screen-3'); initializePathAScreen3()">Next</button>
+      </div>
+
+      <div id="path-a-screen-3" class="screen hidden">
+        <h2>Select Investment Plan</h2>
+        <input type="range" id="horizon-slider" min="1" max="240" value="60" oninput="updateHorizonInfo()"
+          onload="updateHorizonInfo()">
+        <div id="horizon-info"></div>
+        <div id="single-plan-message"></div>
+        <div id="investment-plans-container" class="d-flex"></div>
+      </div>
+
+      <div id="path-a-screen-4" class="screen hidden">
+        <h2>Customize</h2>
+        <input type="text" placeholder="Enter Name" id="goal-name-input">
+        <input type="file" accept="image/*" id="goal-image-input">
+        <button class="btn btn-primary"
+          onclick="updateGlobalVariables('path-a-screen-4'); navigate('path-a-screen-5')">Next</button>
+      </div>
+
+      <div id="path-a-screen-5" class="screen hidden">
+        <h2>Summary</h2>
+        <p>Name: <span id="summary-goal-name"></span></p>
+        <p><img id="summary-goal-image" alt="Goal Image" width="80" height="80" /></p>
+        <p>Amount: $<span id="summary-goal-amount"></span></p>
+        <p>Target Date: <span id="summary-goal-target-date"></span></p>
+        <p>Investment profile: <span id="summary-goal-plan-name"></span></p>
+        <p>First Payment: $<span id="summary-first-payment"></span></p>
+        <p>Cyclical Payment: $<span id="summary-cyclical-payment"></span></p>
+        <button class="btn btn-primary">Finish</button>
+      </div>
+
+      <!-- Path B Screens -->
+      <div id="path-b-screen-1" class="screen hidden">
+        <h2>Select Investment Amount</h2>
+        <input type="number" id="input-b-1" min="1000" max="10000" step="500" value="5000"
+          oninput="syncInputAndSliderB1('input');" />
+        <input type="range" id="slider-b-1" min="1000" max="10000" step="500" value="5000"
+          oninput="syncInputAndSliderB1('slider');" />
+        <button class="btn btn-primary"
+          onclick="navigate('path-b-screen-2') ;initializePathBScreen2();updateGlobalVariables('path-b-screen-1')">Next</button>
+      </div>
+
+      <div id="path-b-screen-2" class="screen hidden">
+        <h2>Select Profile</h2>
+        <input type="range" id="horizon-slider-b" min="1" max="240" value="60" oninput="updateHorizonInfoB()"
+          onload="updateHorizonInfoB()">
+        <div id="horizon-infoB"></div>
+        <div id="single-fund-message"></div>
+        <div id="funds-container" class="d-flex"></div>
+      </div>
+    </div>
+
+    <div id="path-b-screen-3" class="screen hidden">
+      <h2>Add Cyclical Payment</h2>
+      <input type="number" id="input-b-3" min="0" max="10000" step="500" value="5000"
+        oninput="syncInputAndSliderB3('input');" />
+      <input type="range" id="slider-b-3" min="0" max="10000" step="500" value="5000"
+        oninput="syncInputAndSliderB3('slider');" />
+
+      <button class="btn btn-primary"
+        onclick="navigate('path-b-screen-4');updateGlobalVariables('path-b-screen-3');">Next</button>
+    </div>
+
+    <div id="path-b-screen-4" class="screen hidden">
+      <h2>Customize</h2>
+      <input type="text" placeholder="Enter Name" id="investment-name-input">
+      <input type="file" accept="image/*" id="investment-image-input">
+      <button class="btn btn-primary"
+        onclick="updateGlobalVariables('path-b-screen-4');navigate('path-b-screen-5')">Next</button>
+    </div>
+
+    <div id="path-b-screen-5" class="screen hidden">
+      <h2>Summary</h2>
+      <p>Name: <span id="summary-investment-name"></span></p>
+      <p><img id="summary-investment-image" alt="Investment Image" width="80" height="80" /></p>
+      <p>Investment amount: $<span id="summary-investment-amount"></span></p>
+      <p>Cyclical payment: $<span id="summary-cyclical-payment-b"></span></p>
+      <p>Horizon: <span id="summary-horizon-b"></span></p>
+      <p>Investment profile: <span id="summary-investment-profile"></span></p>
+      <p>Fund: <span id="summary-selected-fund"></span></p>
+      <button class="btn btn-primary">Finish</button>
+    </div>
+
+  </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Modal for displaying plan details -->
+  <div class="modal fade" id="plan-details-modal" tabindex="-1" role="dialog" aria-labelledby="planDetailsModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!-- Modal content is populated by showPlanDetails function -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal for displaying fund details -->
+  <div class="modal fade" id="fund-details-modal" tabindex="-1" role="dialog" aria-labelledby="fundDetailsModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!-- Modal content is populated by showPlanDetails function -->
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
